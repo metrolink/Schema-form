@@ -1,0 +1,28 @@
+{
+     "title": "Finn en bedre og billigere strømavtale i ditt område",
+     "fields": [
+    {
+         "label": "Velg boligtype",
+         "name": "property_type",
+         "type": "select",
+         "options": [],
+         "required": true
+    },{
+         "label": "Adresse (der du bruker strøm)",
+         "name": "address_street_name",
+         "type": "text",
+         "required": true
+       },
+       {
+         "label": "Navn",
+         "name": "name",
+         "type": "text",
+         "required": true
+       },
+       {
+         "label": "E-post",
+         "fieldName": "email",
+         "type": "email"
+       }
+    ]
+    }   
