@@ -5,7 +5,7 @@
          "label": "Velg boligtype",
          "name": "property_type",
          "type": "select",
-         "options": [],
+         "options": [{"value": "House"}, {"value":"Apartment"}],
          "required": true
     },{
          "label": "Adresse (der du bruker strøm)",
