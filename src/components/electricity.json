@@ -5,7 +5,7 @@
          "label": "Velg boligtype",
          "name": "property_type",
          "type": "select",
-         "options": [{"value": "House"}, {"value":"Apartment"}],
+         "options": [{"value": "Hus"}, {"value":"Leilighet"}, {"value":"Villa"}],
          "required": true
     },{
          "label": "Adresse (der du bruker strøm)",
@@ -23,6 +23,12 @@
          "label": "E-post",
          "fieldName": "email",
          "type": "email"
+       },
+       {
+        "label": "Avtale start",
+        "fieldName": "dato",
+        "type": "date"
        }
-    ]
+    ],
+    "buttonText":"Finn strømavtale"
     }   

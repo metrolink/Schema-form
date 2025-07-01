@@ -36,7 +36,7 @@ function MyForm() {
                 const addressRegEx = /[a-zA-ZæøåÆØÅ]+( )\d/;
                 const checkAddress = addressRegEx.test(userInput);
                 if(!checkAddress){
-                    errorArr.push('Address does not contain a number or uses special characters');
+                    errorArr.push('Adresse må bestå av kun bokstaver og minst et tall');
                 }
                 else{}
                 break;
@@ -44,9 +44,14 @@ function MyForm() {
                 const nameRegEx = /^[a-zA-ZæøåÆØÅ ]+$/;
                 const checkName = nameRegEx.test(userInput);
                 if(!checkName){
-                    errorArr.push('Name must only contain characters');
+                    errorArr.push('Navn kan kun inneholde bokstaver');
                 }
                 else{}
+                break;
+            case "dato":
+                const todayDate = new Date().toJSON().slice(0,10);
+                if(userInput < todayDate)
+                    errorArr.push("Du kan ikke starte avtalen før idag")
                 break;
 
             case "property_type":
@@ -56,7 +61,7 @@ function MyForm() {
                 break;
 
             default:
-                errorArr.push(field + " is not an accepted JSON field name");
+                errorArr.push(field + " er ikke et godtatt JSON felt");
                 break;
         }
     }
@@ -72,9 +77,9 @@ function MyForm() {
     )}
         </div>
         <br/>
-        <button className='btn' type='submit'>Finn strømavtale</button>
+        <button className='btn' type='submit'>{fullJson.buttonText}</button>
         </form>
-        <div>{addressError.map(errors => <div className='error'>{errors}<br/></div>)}<br /></div>
+        <div>{addressError.map(errors => <div className='error'>{errors}<br/></div>)}</div>
     </div>
 )
 }
