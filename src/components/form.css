@@ -7,6 +7,9 @@
 .error{
     color: red;
 }
+.submitted{
+    color: yellowgreen;
+}
 .title{
     position: relative;
     top: 10%;

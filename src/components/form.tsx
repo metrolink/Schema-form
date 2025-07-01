@@ -7,12 +7,14 @@ import './form.css'
 
 function MyForm() {
     const [addressError, setAddressError] = useState<string[]>([])
+    const [submitSuccessful, setSubmitSuccessful] = useState<boolean>(false)
     let errorArr:string[] = []
 
     const json = JSON.stringify(electricity);
     const fullJson = JSON.parse(json);
 
     function validateAnswer(submit:any){
+        setSubmitSuccessful(false);
         submit.preventDefault();
 
         const form = submit.target;
@@ -24,6 +26,11 @@ function MyForm() {
             validateUserInput(formJsonName, formJson[formJsonName]);
             console.log(formJson[formJsonName])
         }
+
+        if(errorArr.length == 0){
+            setSubmitSuccessful(true);
+        }
+        else{}
         setAddressError(errorArr);
 
 
@@ -90,6 +97,7 @@ function MyForm() {
                 </div>
             )}
         </div>
+        <div>{submitSuccessful && <div className='submitted'>Submitted!</div>}</div>
     </div>
 )
 }
