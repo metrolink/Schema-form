@@ -1,0 +1,13 @@
+.error{
+    color: red;
+}
+.title{
+    color: white;
+}
+.btn{
+    padding: 1rem;
+    border-radius: 20px;
+    border-color: orange;
+    background-color: #ff5e22;
+    color: white;
+}

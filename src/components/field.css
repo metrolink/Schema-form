@@ -1,0 +1,14 @@
+.field{
+    display: flex;
+    align-items: center;
+}
+.error{
+    color: red;
+}
+
+label{
+    color: white;
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}

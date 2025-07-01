@@ -1,3 +1,5 @@
+import './field.css'
+
 type fieldVariables = {
     label: string,
     type: string,
@@ -14,17 +16,18 @@ type optionVariables = {
 export function Fields(field:fieldVariables){
     if(field.label && field.type && field.name){
         if(field.type == 'select'){
-            return <label>{field.label}: 
-                        <select name={field.name} required={field.required} >
+            return  <div className='field'>
+                    <label>{field.label}: &nbsp;</label>
+                        <select name={field.name} required={field.required}>
                             {field.options && field.options.map((option:optionVariables) => <option key={option.value} value={option.value}>{option.value}</option>)}
                         </select>
-                    </label>
+                    </div>
         }
         else{
-            return <div><label>{field.label}: <input type={field.type} name={field.name} required={field.required} /></label></div>
+            return <div className='field'><label>{field.label}: &nbsp; </label><input type={field.type} name={field.name} required={field.required} /></div>
         }
     }
     else{
-        return <div>Error in JSON object</div>
+        return <div className='error'>Error in JSON object</div>
     }
     }
