@@ -13,7 +13,7 @@ function MyForm() {
     const json = JSON.stringify(electricity);
     const fullJson = JSON.parse(json);
 
-    function validateAnswer(submit:any){
+    function handleSubmission(submit:any){
         setSubmitSuccessful(false);
         submit.preventDefault();
 
@@ -37,8 +37,8 @@ function MyForm() {
         
     }
 
-    function validateUserInput(field:string, userInput:any){
-        switch(field){
+    function validateUserInput(fieldName:string, userInput:any){
+        switch(fieldName){
             case "address_street_name":
                 const addressRegEx = /[a-zA-ZæøåÆØÅ]+( )\d/;
                 const checkAddress = addressRegEx.test(userInput);
@@ -68,7 +68,7 @@ function MyForm() {
                 break;
 
             default:
-                errorArr.push(field + " er ikke et godtatt JSON felt");
+                errorArr.push(fieldName + " er ikke et godtatt JSON felt");
                 break;
         }
     }
@@ -76,7 +76,7 @@ function MyForm() {
     
     return(
     <div>
-        <form onSubmit={validateAnswer} className='form'>
+        <form onSubmit={handleSubmission} className='form'>
             <h1 className='title'>{fullJson.title}</h1>
             <div>
                 {fullJson.fields.map((field:any) => 
