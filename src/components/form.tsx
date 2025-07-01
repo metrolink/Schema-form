@@ -7,6 +7,7 @@ import { Fields } from './field';
 function MyForm() {
     const [addressError, setAddressError] = useState<string>('')
     const [nameError, setNameError] = useState<string>('')
+    const [jsonError, setJsonError] = useState<string>('')
     //const [emailError, setEmailError] = useState<string>('')
 
     const json = JSON.stringify(electricity);
@@ -31,29 +32,30 @@ function MyForm() {
 
     function validateUserInput(field:string, userInput:any){
         switch(field){
-            case "property_type":
-                break;
             case "address_street_name":
-                const re = /[a-zA-ZæøåÆØÅ]+( )\d/
-                const check = re.test(userInput);
-                if(!check){
+                const addressRegEx = /[a-zA-ZæøåÆØÅ]+( )\d/
+                const checkAddress = addressRegEx.test(userInput);
+                if(!checkAddress){
                     setAddressError('Does not contain an address with number or contain special characters')
                 }
                 else{setAddressError('')}
                 break;
             case "name":
-                const reName = /^[a-zA-ZæøåÆØÅ ]+$/
-                const checkName = reName.test(userInput)
+                const nameRegEx = /^[a-zA-ZæøåÆØÅ ]+$/
+                const checkName = nameRegEx.test(userInput)
                 if(!checkName){
                     setNameError('Name must only contain characters')
                 }
                 else{setNameError('')}
                 break;
 
+            case "property_type":
+                break;
             case "email":
                 break;
 
             default:
+                setJsonError(field + " is not an accepted JSON field name")
                 break;
         }
     }
@@ -64,10 +66,11 @@ function MyForm() {
         <form onSubmit={validateAnswer}>
         <div>{fullJson.title}</div>
         {fullJson.fields.map((field:any) => 
-        <Fields key={field.name ?? field.fieldName} label={field.label} type={field.type} name={field.name} fieldName={field.fieldName} options={field.options} required={field.required} />
+        <Fields key={field.name ?? field.fieldName} label={field.label} type={field.type} name={field.name ?? field.fieldName} options={field.options} required={field.required} />
     )}
         <button type='submit'> Send in</button>
         </form>
+        {jsonError}
         {addressError && <div>{addressError}<br /></div>}
         {nameError && <div>{nameError}<br /></div>}
     </div>
