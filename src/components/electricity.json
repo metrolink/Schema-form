@@ -1,5 +1,6 @@
 {
      "title": "Finn en bedre og billigere strømavtale i ditt område",
+     "buttonText":"Finn strømavtale",
      "fields": [
     {
          "label": "Velg boligtype",
@@ -29,6 +30,5 @@
         "fieldName": "dato",
         "type": "date"
        }
-    ],
-    "buttonText":"Finn strømavtale"
-    }   
+    ]
+    }

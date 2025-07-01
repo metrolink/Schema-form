@@ -69,17 +69,27 @@ function MyForm() {
     
     return(
     <div>
-        <form onSubmit={validateAnswer}>
-        <h1 className='title'>{fullJson.title}</h1>
-        <div className='flex'>
-        {fullJson.fields.map((field:any) => 
-        <Fields key={field.name ?? field.fieldName} label={field.label} type={field.type} name={field.name ?? field.fieldName} options={field.options} required={field.required} />
-    )}
-        </div>
-        <br/>
-        <button className='btn' type='submit'>{fullJson.buttonText}</button>
+        <form onSubmit={validateAnswer} className='form'>
+            <h1 className='title'>{fullJson.title}</h1>
+            <div>
+                {fullJson.fields.map((field:any) => 
+                    <Fields key={field.name ?? field.fieldName}
+                            label={field.label} 
+                            type={field.type} 
+                            name={field.name ?? field.fieldName} 
+                            options={field.options} 
+                            required={field.required} />
+                )}
+            </div>
+            <br/>
+            <button className='btn' type='submit'>{fullJson.buttonText}</button>
         </form>
-        <div>{addressError.map(errors => <div className='error'>{errors}<br/></div>)}</div>
+        <div>{addressError.map(errors => 
+            <div className='error'>
+                {errors}<br/>
+                </div>
+            )}
+        </div>
     </div>
 )
 }
