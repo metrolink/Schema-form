@@ -33,6 +33,6 @@ export function Fields(field:fieldVariables){
         }
     }
     else{
-        return <div className='error'>Error in JSON object</div>
+        return <div className='error'>Error in JSON object {field.label ?? field.name}</div>
     }
     }
