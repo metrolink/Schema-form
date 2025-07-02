@@ -37,11 +37,11 @@ function MyForm() {
         
     }
 
-    function validateUserInput(fieldName:string, userInput:any){
+    function validateUserInput(fieldName:string, userInput:FormDataEntryValue){
         switch(fieldName){
             case "address_street_name":
                 const addressRegEx = /[a-zA-ZæøåÆØÅ]+( )\d/;
-                const checkAddress = addressRegEx.test(userInput);
+                const checkAddress = addressRegEx.test(userInput.toString());
                 if(!checkAddress){
                     errorArr.push('Adresse må bestå av kun bokstaver og minst et tall');
                 }
@@ -49,7 +49,7 @@ function MyForm() {
                 break;
             case "name":
                 const nameRegEx = /^[a-zA-ZæøåÆØÅ ]+$/;
-                const checkName = nameRegEx.test(userInput);
+                const checkName = nameRegEx.test(userInput.toString());
                 if(!checkName){
                     errorArr.push('Navn kan kun inneholde bokstaver');
                 }
